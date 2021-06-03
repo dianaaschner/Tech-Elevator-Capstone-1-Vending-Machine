@@ -1,8 +1,11 @@
 package com.techelevator;
 
+import com.techelevator.view.InventoryInterface;
 import com.techelevator.view.Menu;
 
-public class VendingMachineCLI {
+import java.io.FileNotFoundException;
+
+public class VendingMachineCLI implements InventoryInterface {
 
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
@@ -24,37 +27,39 @@ public class VendingMachineCLI {
 		this.menu = menu;
 	}
 
-	public void run() {
+	public void run() throws FileNotFoundException {
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// display vending machine items
+				getInventoryFile();
+				System.out.println();
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
 				String choice1 = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
-				if (choice1.equals(PURCHASE_MENU_FEED_MONEY)){
+				if (choice1.equals(PURCHASE_MENU_FEED_MONEY)) {
 					String choice2 = (String) menu.getChoiceFromOptions(FEED_MONEY_MENU);
-					if (choice2.equals(FEED_MONEY_CASH)){
+					if (choice2.equals(FEED_MONEY_CASH)) {
 					// cash option
-					} else if (choice2.equals(FEED_MONEY_BANK_ACCOUNT)){
+					} else if (choice2.equals(FEED_MONEY_BANK_ACCOUNT)) {
 						// bank account option
 					}
 
 					//get balance
 					//feed money method
-				} else if (choice1.equals(PURCHASE_MENU_SELECT_PRODUCT)){
+				} else if (choice1.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
 					//select product
-				} else if (choice1.equals(PURCHASE_MENU_FINISH_TRANSACTION)){
+				} else if (choice1.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
 					//finish transaction
 				}
-			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)){
+			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
 				// exit
 			}
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
 		cli.run();

@@ -39,8 +39,13 @@ public class VendingMachineCLI implements InventoryInterface {
 
 				while(dataInput.hasNextLine()) {
 					String line = dataInput.nextLine();
+					String[] separated = line.split("//|");
+					String[] displayString = {separated[1], int numberOfItems);
+					//String[] seperatedOptions = line.split("\\|");
 					// parse the line into pieces
-					System.out.println(line);
+					 //System.out.println(line);
+					//name and inventory
+
 				}
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase

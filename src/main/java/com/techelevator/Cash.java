@@ -4,10 +4,12 @@ public class Cash extends Money {
     private double changeOwed;
     private Object balanceAfterPurchase;
 
-    public Cash(double userMoneyInput, double changeOwed, double balanceAfterUserInput, double vendingMachineBalance) {
-        super(userMoneyInput, vendingMachineBalance, balanceAfterUserInput);
+    public Cash(double changeOwed, double balanceAfterUserInput) {
+        super(balanceAfterUserInput);
         this.changeOwed = changeOwed;
     }
+
+
 
     public double balanceAfterPurchase(double balanceAfterUserInput, double changeOwed, double balanceAfterPurchase) {
         balanceAfterPurchase = balanceAfterUserInput - getPrice();
@@ -16,8 +18,8 @@ public class Cash extends Money {
 
     public int[] getChangeOwed(double balanceAfterPurchase) {
         this.balanceAfterPurchase = balanceAfterPurchase;
-       int countDimes = 0;
-       int countNickles = 0;
+        int countDimes = 0;
+        int countNickles = 0;
         int countQuarters = 0;
         double changeOwedAfterDimes = 0;
         double changeOwedAfterNickles = 0;

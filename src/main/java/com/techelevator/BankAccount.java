@@ -2,8 +2,8 @@ package com.techelevator;
 
 public class BankAccount extends Money {
     private String accountNumber;
-    public BankAccount(double userMoneyInput, String accountNumber, double vendingMachineBalance) {
-        super(userMoneyInput, vendingMachineBalance);
+    public BankAccount(String accountNumber, double balanceAfterUserInput) {
+        super(balanceAfterUserInput);
         this.accountNumber = accountNumber;
     }
 

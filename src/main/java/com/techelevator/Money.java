@@ -6,7 +6,7 @@ public class Money {
     double balanceAfterUserInput;
     double price = 0;
 
-    public Money(double userMoneyInput, double vendingMachineBalance, double balanceAfterUserInput) {
+    public Money(double balanceAfterUserInput) {
         this.userMoneyInput = userMoneyInput;
         this.vendingMachineBalance = vendingMachineBalance;
         this.balanceAfterUserInput = balanceAfterUserInput;

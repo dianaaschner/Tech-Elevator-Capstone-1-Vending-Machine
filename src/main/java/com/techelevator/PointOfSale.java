@@ -1,12 +1,12 @@
 package com.techelevator;
 
-public class Money {
+public class PointOfSale {
     double userMoneyInput;
     double vendingMachineBalance = 0;
     double balanceAfterUserInput;
     double price = 0;
 
-    public Money(double balanceAfterUserInput) {
+    public PointOfSale(double balanceAfterUserInput) {
         this.userMoneyInput = userMoneyInput;
         this.vendingMachineBalance = vendingMachineBalance;
         this.balanceAfterUserInput = balanceAfterUserInput;

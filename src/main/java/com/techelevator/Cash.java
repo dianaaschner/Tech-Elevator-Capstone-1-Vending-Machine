@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class Cash extends Money {
+public class Cash extends PointOfSale {
     private double changeOwed;
     private Object balanceAfterPurchase;
 
@@ -25,13 +25,13 @@ public class Cash extends Money {
         double changeOwedAfterNickles = 0;
         int[] change = new int[] { countDimes, countNickles, countQuarters };
       double changeOwedAfterQuarters = 0;
-        while(balanceAfterPurchase > 0.25) {
+        if(balanceAfterPurchase > 0.25) {
             countQuarters++;
              changeOwedAfterQuarters += balanceAfterPurchase - ((countQuarters * 25) / 100);
-        } while(changeOwedAfterQuarters > 0.10) {
+        } if(changeOwedAfterQuarters > 0.10) {
             countDimes++;
             changeOwedAfterDimes += changeOwedAfterQuarters - ((countDimes * 10) / 100);
-        } while(changeOwedAfterDimes > 0.05) {
+        } if(changeOwedAfterDimes > 0.05) {
             countNickles++;
             changeOwedAfterNickles += changeOwedAfterDimes - ((countNickles * 5) / 100);
         }

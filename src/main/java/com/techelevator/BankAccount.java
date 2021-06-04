@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class BankAccount extends Money {
+public class BankAccount extends PointOfSale {
     private String accountNumber;
     public BankAccount(String accountNumber, double balanceAfterUserInput) {
         super(balanceAfterUserInput);

@@ -13,7 +13,7 @@ public class VendingMachineCLI implements InventoryInterface {
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
-	private static final String PURCHASE_MENU_FEED_MONEY = "Feed Money";
+	private static final String PURCHASE_MENU_FEED_MONEY = "Feed PointOfSale";
 	private static final String PURCHASE_MENU_SELECT_PRODUCT = "Select Product";
 	private static final String PURCHASE_MENU_FINISH_TRANSACTION = "Finish Transaction";
 	private static final String[] PURCHASE_MENU_OPTIONS = {PURCHASE_MENU_FEED_MONEY, PURCHASE_MENU_SELECT_PRODUCT, PURCHASE_MENU_FINISH_TRANSACTION};
@@ -39,6 +39,7 @@ public class VendingMachineCLI implements InventoryInterface {
 
 				while(dataInput.hasNextLine()) {
 					String line = dataInput.nextLine();
+					// parse the line into pieces
 					System.out.println(line);
 				}
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {

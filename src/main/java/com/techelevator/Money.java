@@ -17,6 +17,7 @@ public class Money {
     }
 
     public double getVendingMachineBalance() {
+
         return vendingMachineBalance;
     }
 
@@ -25,10 +26,12 @@ public class Money {
     }
 
     public double getUserMoneyInput() {
+
         return userMoneyInput;
     }
 
     public void setUserMoneyInput(double userMoneyInput) {
+
         this.userMoneyInput = userMoneyInput;
     }
 }

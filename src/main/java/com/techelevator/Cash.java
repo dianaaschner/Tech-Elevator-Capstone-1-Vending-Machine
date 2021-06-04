@@ -4,9 +4,9 @@ public class Cash extends Money {
     private double changeOwed;
     private Object balanceAfterPurchase;
 
-    public Cash(double changeOwed, double balanceAfterUserInput) {
+    public Cash(double balanceAfterUserInput, double balanceAfterPurchase) {
         super(balanceAfterUserInput);
-        this.changeOwed = changeOwed;
+        this.balanceAfterPurchase = balanceAfterPurchase;
     }
 
 
@@ -25,15 +25,15 @@ public class Cash extends Money {
         double changeOwedAfterNickles = 0;
         int[] change = new int[] { countDimes, countNickles, countQuarters };
       double changeOwedAfterQuarters = 0;
-        while(changeOwed > 0.25) {
+        while(balanceAfterPurchase > 0.25) {
             countQuarters++;
-             changeOwedAfterQuarters = changeOwed - ((countQuarters * 25) / 100);
+             changeOwedAfterQuarters += balanceAfterPurchase - ((countQuarters * 25) / 100);
         } while(changeOwedAfterQuarters > 0.10) {
             countDimes++;
-            changeOwedAfterDimes = changeOwedAfterQuarters - ((countDimes * 10) / 100);
+            changeOwedAfterDimes += changeOwedAfterQuarters - ((countDimes * 10) / 100);
         } while(changeOwedAfterDimes > 0.05) {
             countNickles++;
-            changeOwedAfterNickles = changeOwedAfterDimes - ((countNickles * 5) / 100);
+            changeOwedAfterNickles += changeOwedAfterDimes - ((countNickles * 5) / 100);
         }
         return change;
     }

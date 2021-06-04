@@ -10,7 +10,7 @@ public class CashTest {
 
     @Test
     public void returns_4_quarters_when_owed_a_dollar() {
-        Cash testing = new Cash(1.00, 2.00);
+        Cash testing = new Cash(2.00, 1.00);
         double testArray = 1.00;
         int[] newArray = testing.getChangeOwed(testArray);
         Assert.assertEquals(0,0,4);

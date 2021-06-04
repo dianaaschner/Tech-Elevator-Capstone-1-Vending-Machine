@@ -50,4 +50,12 @@ public class Menu {
 		out.print(System.lineSeparator() + "Please choose an option >>> ");
 		out.flush();
 	}
+
+	public Double getDoubleFromUserInput(){
+		Double moneyInput = null;
+		String userInput = in.nextLine();
+		moneyInput = Double.parseDouble(userInput);
+		return moneyInput;
+
+	}
 }

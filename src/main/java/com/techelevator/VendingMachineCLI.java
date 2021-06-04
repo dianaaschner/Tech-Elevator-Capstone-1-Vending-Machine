@@ -48,7 +48,9 @@ public class VendingMachineCLI implements InventoryInterface, SoundsInterface {
 				if (choice1.equals(PURCHASE_MENU_FEED_MONEY)) {
 					String choice2 = (String) menu.getChoiceFromOptions(FEED_MONEY_MENU);
 					if (choice2.equals(FEED_MONEY_CASH)) {
-						System.out.println("Please enter cash in whole dollar amounts");
+						System.out.println("Please enter cash in whole dollar amounts: ");
+						Double cashInput = (Double) menu.getDoubleFromUserInput();
+						System.out.println("Cash entered = " + cashInput);
 
 
 

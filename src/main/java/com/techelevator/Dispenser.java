@@ -12,6 +12,8 @@ public class Dispenser extends VendingMachineCLI {
         this.inventoryAfterPurchase = inventoryAfterPurchase;
     }
 
+
+
     //calls the sound, reduces inventory, gives product to user
 
 }

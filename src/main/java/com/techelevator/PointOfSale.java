@@ -1,10 +1,16 @@
 package com.techelevator;
 
+import com.techelevator.view.Menu;
+
+import java.io.FileNotFoundException;
+
 public class PointOfSale {
     double userMoneyInput;
     double vendingMachineBalance = 0;
     double balanceAfterUserInput;
     double price = 0;
+
+
 
     public PointOfSale(double balanceAfterUserInput) {
         this.userMoneyInput = userMoneyInput;

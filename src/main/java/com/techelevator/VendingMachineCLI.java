@@ -3,17 +3,16 @@ package com.techelevator;
 import com.techelevator.view.InventoryInterface;
 import com.techelevator.view.Menu;
 import java.io.File;
-
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class VendingMachineCLI implements InventoryInterface {
+public class VendingMachineCLI implements InventoryInterface, SoundsInterface {
 
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
-	private static final String PURCHASE_MENU_FEED_MONEY = "Feed PointOfSale";
+	private static final String PURCHASE_MENU_FEED_MONEY = "Feed Money";
 	private static final String PURCHASE_MENU_SELECT_PRODUCT = "Select Product";
 	private static final String PURCHASE_MENU_FINISH_TRANSACTION = "Finish Transaction";
 	private static final String[] PURCHASE_MENU_OPTIONS = {PURCHASE_MENU_FEED_MONEY, PURCHASE_MENU_SELECT_PRODUCT, PURCHASE_MENU_FINISH_TRANSACTION};
@@ -39,13 +38,9 @@ public class VendingMachineCLI implements InventoryInterface {
 
 				while(dataInput.hasNextLine()) {
 					String line = dataInput.nextLine();
-					String[] separated = line.split("//|");
-					String[] displayString = {separated[1], int numberOfItems);
-					//String[] seperatedOptions = line.split("\\|");
-					// parse the line into pieces
-					 //System.out.println(line);
-					//name and inventory
-
+					String[] separated = line.split("\\|");
+					String displayString = (separated[1] + " 5");
+					System.out.println(displayString);
 				}
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
@@ -53,6 +48,10 @@ public class VendingMachineCLI implements InventoryInterface {
 				if (choice1.equals(PURCHASE_MENU_FEED_MONEY)) {
 					String choice2 = (String) menu.getChoiceFromOptions(FEED_MONEY_MENU);
 					if (choice2.equals(FEED_MONEY_CASH)) {
+						System.out.println("Please enter cash in whole dollar amounts");
+
+
+
 					// cash option
 					} else if (choice2.equals(FEED_MONEY_BANK_ACCOUNT)) {
 						// bank account option
@@ -70,6 +69,8 @@ public class VendingMachineCLI implements InventoryInterface {
 			}
 		}
 	}
+
+
 
 	public static void main(String[] args) throws FileNotFoundException {
 		Menu menu = new Menu(System.in, System.out);

@@ -1,8 +1,20 @@
 package com.techelevator;
 
+import com.techelevator.view.Menu;
+import org.w3c.dom.ls.LSOutput;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
 public class Cash extends PointOfSale {
     private double changeOwed;
     private Object balanceAfterPurchase;
+
+   // private PrintWriter out;
+ //   String cashInserted = null;
+   // Scanner cashInput = new Scanner(System.in.toString());
+
 
     public Cash(double balanceAfterUserInput, double balanceAfterPurchase) {
         super(balanceAfterUserInput);
@@ -37,6 +49,7 @@ public class Cash extends PointOfSale {
         }
         return change;
     }
+
 
     public void setChangeOwed(double changeOwed) {
         this.changeOwed = changeOwed;

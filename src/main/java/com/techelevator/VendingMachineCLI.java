@@ -2,8 +2,10 @@ package com.techelevator;
 
 import com.techelevator.view.InventoryInterface;
 import com.techelevator.view.Menu;
+import java.io.File;
 
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class VendingMachineCLI implements InventoryInterface {
 
@@ -22,19 +24,23 @@ public class VendingMachineCLI implements InventoryInterface {
 
 	private Menu menu;
 
-	public VendingMachineCLI(Menu menu) {
+	public VendingMachineCLI(Menu menu) throws FileNotFoundException {
 
 		this.menu = menu;
 	}
+	File dataFile = new File("vendingmachine.csv");
+	Scanner dataInput = new Scanner(dataFile);
 
 	public void run() throws FileNotFoundException {
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-				// display vending machine items
-				getInventoryFile();
-				System.out.println();
+
+				while(dataInput.hasNextLine()) {
+					String line = dataInput.nextLine();
+					System.out.println(line);
+				}
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
 				String choice1 = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);

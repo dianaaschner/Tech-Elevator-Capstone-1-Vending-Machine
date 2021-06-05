@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Cash extends PointOfSale {
     private double changeOwed;
-    private Object balanceAfterPurchase;
+    private double balanceAfterPurchase;
 
    // private PrintWriter out;
  //   String cashInserted = null;
@@ -23,7 +23,7 @@ public class Cash extends PointOfSale {
 
 
 
-    public double balanceAfterPurchase(double balanceAfterUserInput, double changeOwed, double balanceAfterPurchase) {
+    public double balanceAfterPurchase(double balanceAfterUserInput) {
         balanceAfterPurchase = balanceAfterUserInput - getPrice();
         return balanceAfterPurchase;
     }
@@ -35,7 +35,7 @@ public class Cash extends PointOfSale {
         int countQuarters = 0;
         double changeOwedAfterDimes = 0;
         double changeOwedAfterNickles = 0;
-        int[] change = new int[] { countDimes, countNickles, countQuarters };
+        int[] change = new int[] { countQuarters, countDimes, countNickles, };
       double changeOwedAfterQuarters = 0;
         if(balanceAfterPurchase > 0.25) {
             countQuarters++;
@@ -50,6 +50,9 @@ public class Cash extends PointOfSale {
         return change;
     }
 
+    public double getBalanceAfterPurchase() {
+        return balanceAfterPurchase;
+    }
 
     public void setChangeOwed(double changeOwed) {
         this.changeOwed = changeOwed;

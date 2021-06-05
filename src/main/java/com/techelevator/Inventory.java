@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Inventory {
@@ -12,14 +14,58 @@ public class Inventory {
     double price = 0.0;
     String productSection = "";
     Scanner scanFile = new Scanner("vendingmachine.csv");
+    int numberLeft = 0;
 
 
-    public Inventory(String productCode, String productName, double price, String productSection) {
+    public Inventory(String productCode, String productName, double price, String productSection) throws FileNotFoundException {
         this.productCode = productCode;
         this.productName = productName;
         this.price = price;
         this.productSection = productSection;
     }
+
+    // take info from data file and put each line into an array and then array indexes into maps
+
+
+    File dataFile = new File("vendingmachine.csv");
+    Scanner dataInput = new Scanner(dataFile);
+
+    public void populateMaps() {
+        while (dataInput.hasNextLine()) {
+            String[] fileInfo = null;
+            String line = dataInput.nextLine();
+            fileInfo = line.split("\\|");
+            String productCode = fileInfo[0];
+            String productName = fileInfo[1];
+            double price = Double.parseDouble(fileInfo[2]);
+            String productSection = fileInfo[3];
+
+
+        }
+
+
+    // get name if item and remaining inventory of item for display menu
+
+        Map<String, Integer> nameAndInventory = new HashMap<>();
+        nameAndInventory.put(productName, numberLeft);
+
+
+    // get slots and products display for purchase menu
+
+        Map<String, String> slotsAndProducts = new HashMap<>();
+        slotsAndProducts.put(productCode, productName);
+
+    // get category and price for end transaction menu
+
+        Map<String, Double> categoryAndPrice = new HashMap<>();
+        categoryAndPrice.put(productSection, price);
+    }
+
+
+
+
+
+
 
 
 

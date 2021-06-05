@@ -105,4 +105,11 @@ public class VendingMachineCLI implements InventoryInterface, SoundsInterface {
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
 		cli.run();
 	}
+
+	// access inventory maps
+
+	public Inventory getInventory() {
+		return null;
+	}
+
 }

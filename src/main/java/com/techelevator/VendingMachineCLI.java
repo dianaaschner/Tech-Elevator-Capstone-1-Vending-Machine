@@ -22,9 +22,10 @@ public class VendingMachineCLI implements InventoryInterface, SoundsInterface {
 
 
 	private Menu menu;
-	private Cash cash;
-	private PointOfSale pointOfSale;
+	private Cash cash = new Cash();
+	private PointOfSale pointOfSale = new PointOfSale();
 	private double cashInput = 0;
+	private double amountEntered = 0;
 
 	public VendingMachineCLI(Menu menu) throws FileNotFoundException {
 
@@ -45,23 +46,27 @@ public class VendingMachineCLI implements InventoryInterface, SoundsInterface {
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
 				String choice1 = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
+				String choice2 = (String) menu.getChoiceFromOptions(FEED_MONEY_MENU);
 				if (choice1.equals(PURCHASE_MENU_FEED_MONEY)) {
-					String choice2 = (String) menu.getChoiceFromOptions(FEED_MONEY_MENU);
 					if (choice2.equals(FEED_MONEY_CASH)) {
-							feedMoneyCash();
+						feedMoneyCash();
 
-					// cash option
+						// cash option
 					} else if (choice2.equals(FEED_MONEY_BANK_ACCOUNT)) {
 						// bank account option
+						enterAmount();
 					}
 
 					//get balance
 					//feed money method
-				} else if (choice1.equals(PURCHASE_MENU_SELECT_PRODUCT)) {
+				} else if (choice1.equals(PURCHASE_MENU_SELECT_PRODUCT) && choice2.equals(FEED_MONEY_CASH)) {
 					//select product
 					selectProduct();
+				} else if (choice1.equals(PURCHASE_MENU_SELECT_PRODUCT) && choice2.equals(FEED_MONEY_BANK_ACCOUNT)) {
+					selectProduct2();
+			}
 
-				} else if (choice1.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
+				else if (choice1.equals(PURCHASE_MENU_FINISH_TRANSACTION)) {
 					//finish transaction
 				}
 			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
@@ -69,21 +74,33 @@ public class VendingMachineCLI implements InventoryInterface, SoundsInterface {
 			}
 		}
 	}
+	public void selectProduct2() {
+		System.out.println("Please select an item to purchase: ");
+		String choice = menu.getProductChoice();
+		while (dataInput.hasNextLine()) {
+			String line = dataInput.nextLine();
+			String[] options = line.split("\\|");
+			if (line.contains(choice)) {
+				double cost = Double.parseDouble(options[2]);
+				pointOfSale.setPrice(cost);
+
+			}
+		}
+	}
+
 	public void selectProduct() {
 		System.out.println("Please select an item to purchase: ");
-		menu.getProductChoice();
-		String[] options = null;
+		String choice = menu.getProductChoice();
 			while (dataInput.hasNextLine()) {
 				String line = dataInput.nextLine();
-				options = line.split("\\|");
-				if(line.contains(menu.getProductChoice())) {
+				String[] options = line.split("\\|");
+				if(line.contains(choice)) {
 					double cost = Double.parseDouble(options[2]);
 					pointOfSale.setPrice(cost);
-					cash.balanceAfterPurchase(cashInput);
-					cash.getChangeOwed(cash.getBalanceAfterPurchase());
-					System.out.println(cash.getChangeOwed(cash.getBalanceAfterPurchase()));
+//					cash.getBalanceAfterPurchase(cashInput);
+					cash.getChangeOwed(cash.getBalanceAfterPurchase(cashInput));
+					break;
 				}
-
 			}
 	}
 
@@ -91,6 +108,12 @@ public class VendingMachineCLI implements InventoryInterface, SoundsInterface {
 		System.out.println("Please enter cash in whole dollar amounts: ");
 		cashInput = (Double) menu.getDoubleFromUserInput();
 		System.out.println("Cash entered = " + cashInput);
+	}
+
+	public void enterAmount() {
+		System.out.println("Please enter amount in a whole dollar amount: ");
+		amountEntered = (Double) menu.getDoubleFromUserInput();
+		System.out.println("Amount entered = " + amountEntered);
 	}
 
 	public void displayMenuOptions() {

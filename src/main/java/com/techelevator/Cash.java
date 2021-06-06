@@ -15,44 +15,47 @@ public class Cash extends PointOfSale {
  //   String cashInserted = null;
    // Scanner cashInput = new Scanner(System.in.toString());
 
+    public Cash() {
+    }
 
-    public Cash(double balanceAfterUserInput, double balanceAfterPurchase) {
+    public Cash(double balanceAfterUserInput) {
         super(balanceAfterUserInput);
-        this.balanceAfterPurchase = balanceAfterPurchase;
+//        this.balanceAfterPurchase = balanceAfterPurchase;
     }
 
 
 
-    public double balanceAfterPurchase(double balanceAfterUserInput) {
+    public double getBalanceAfterPurchase(double balanceAfterUserInput) {
         balanceAfterPurchase = balanceAfterUserInput - getPrice();
         return balanceAfterPurchase;
     }
 
     public int[] getChangeOwed(double balanceAfterPurchase) {
-        this.balanceAfterPurchase = balanceAfterPurchase;
+
         int countDimes = 0;
         int countNickles = 0;
         int countQuarters = 0;
-        double changeOwedAfterDimes = 0;
-        double changeOwedAfterNickles = 0;
         int[] change = new int[] { countQuarters, countDimes, countNickles, };
-      double changeOwedAfterQuarters = 0;
-        if(balanceAfterPurchase > 0.25) {
+        while(this.balanceAfterPurchase >= 0.25) {
             countQuarters++;
-             changeOwedAfterQuarters += balanceAfterPurchase - ((countQuarters * 25) / 100);
-        } if(changeOwedAfterQuarters > 0.10) {
+             this.balanceAfterPurchase -= ((countQuarters * 25) / 100);
+        } while(this.balanceAfterPurchase >= 0.10 && this.balanceAfterPurchase < 0.25) {
             countDimes++;
-            changeOwedAfterDimes += changeOwedAfterQuarters - ((countDimes * 10) / 100);
-        } if(changeOwedAfterDimes > 0.05) {
+            this.balanceAfterPurchase -= ((countDimes * 10) / 100);
+        } while(this.balanceAfterPurchase >= 0.05 && this.balanceAfterPurchase < 0.10) {
             countNickles++;
-            changeOwedAfterNickles += changeOwedAfterDimes - ((countNickles * 5) / 100);
+            this.balanceAfterPurchase -= ((countNickles * 5) / 100);
         }
+        System.out.println("Quarters returned: " + countQuarters);
+        System.out.println("Dimes returned: " + countDimes);
+        System.out.println("Nickles returned: " + countNickles);
+
         return change;
     }
 
-    public double getBalanceAfterPurchase() {
-        return balanceAfterPurchase;
-    }
+//    public double getBalanceAfterPurchase() {
+//        return balanceAfterPurchase;
+//    }
 
     public void setChangeOwed(double changeOwed) {
         this.changeOwed = changeOwed;

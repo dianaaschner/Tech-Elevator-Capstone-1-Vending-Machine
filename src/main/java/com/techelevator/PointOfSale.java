@@ -8,8 +8,10 @@ public class PointOfSale {
     double userMoneyInput;
     double vendingMachineBalance = 0;
     double balanceAfterUserInput;
-    double price = 0;
+    double price;
 
+    public PointOfSale(){
+    }
 
 
     public PointOfSale(double balanceAfterUserInput) {

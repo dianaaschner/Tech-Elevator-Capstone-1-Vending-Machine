@@ -1,4 +1,4 @@
-package com.techelevator;
+/* package com.techelevator;
 
 public class Drinks extends Inventory {
     private String sound = "Glug Glug, Yum!";
@@ -10,3 +10,4 @@ public class Drinks extends Inventory {
         return sound;
     }
 }
+*/

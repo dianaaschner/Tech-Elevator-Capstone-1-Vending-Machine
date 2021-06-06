@@ -33,6 +33,8 @@ public class VendingMachineCLI implements InventoryInterface, SoundsInterface {
 	File dataFile = new File("vendingmachine.csv");
 	Scanner dataInput = new Scanner(dataFile);
 
+
+
 	public void run() throws FileNotFoundException {
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);

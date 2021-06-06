@@ -1,5 +1,5 @@
-package com.techelevator;
-
+//package com.techelevator;
+/*
 public class Gum extends Inventory {
     private String sound = "Chew Chew, Yum!";
 
@@ -11,3 +11,4 @@ public class Gum extends Inventory {
     }
 
 }
+*/

@@ -30,35 +30,38 @@ public class Inventory {
     File dataFile = new File("vendingmachine.csv");
     Scanner dataInput = new Scanner(dataFile);
 
-    public void populateMaps() {
+    public void populateArrays() {
         while (dataInput.hasNextLine()) {
             String[] fileInfo = null;
             String line = dataInput.nextLine();
             fileInfo = line.split("\\|");
-            String productCode = fileInfo[0];
-            String productName = fileInfo[1];
-            double price = Double.parseDouble(fileInfo[2]);
-            String productSection = fileInfo[3];
+             productCode = fileInfo[0];
+             productName = fileInfo[1];
+             price = Double.parseDouble(fileInfo[2]);
+             productSection = fileInfo[3];
+
+            System.out.println(productCode);
 
 
         }
 
 
+
     // get name if item and remaining inventory of item for display menu
 
-        Map<String, Integer> nameAndInventory = new HashMap<>();
-        nameAndInventory.put(productName, numberLeft);
+      //  Map<String, Integer> nameAndInventory = new HashMap<>();
+     //   nameAndInventory.put(productName, numberLeft);
 
 
     // get slots and products display for purchase menu
 
-        Map<String, String> slotsAndProducts = new HashMap<>();
-        slotsAndProducts.put(productCode, productName);
+      //  Map<String, String> slotsAndProducts = new HashMap<>();
+      //  slotsAndProducts.put(productCode, productName);
 
     // get category and price for end transaction menu
 
-        Map<String, Double> categoryAndPrice = new HashMap<>();
-        categoryAndPrice.put(productSection, price);
+      //  Map<String, Double> categoryAndPrice = new HashMap<>();
+       // categoryAndPrice.put(productSection, price);
     }
 
 

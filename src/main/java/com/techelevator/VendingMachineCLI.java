@@ -21,6 +21,7 @@ public class VendingMachineCLI implements InventoryInterface, SoundsInterface {
 	private static final String[] FEED_MONEY_MENU = {FEED_MONEY_CASH, FEED_MONEY_BANK_ACCOUNT};
 
 
+	private BankAccount bankAccount = new BankAccount();
 	private Menu menu;
 	private Cash cash = new Cash();
 	private PointOfSale pointOfSale = new PointOfSale();
@@ -83,7 +84,7 @@ public class VendingMachineCLI implements InventoryInterface, SoundsInterface {
 			if (line.contains(choice)) {
 				double cost = Double.parseDouble(options[2]);
 				pointOfSale.setPrice(cost);
-
+				bankAccount.getWithdrawal();
 			}
 		}
 	}
